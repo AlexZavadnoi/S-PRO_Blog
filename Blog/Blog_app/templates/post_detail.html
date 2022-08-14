@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+      <div class="col s12 m12 l4">
+        <div class="card-panel">
+          <h6> {{ object.title }} </h6>
+            <div> {{ object.full_text }}</div>
+            <div> {{ object.main_picture }}</div>
+            <div> Author: {{object.author.get_full_name}}({{object.author.city}}) </div>
+            <div> Likes: {{object.likes.count}}</div>
+
+            <div> Comments:
+              {% for comment in object.comments.all %}
+                <div>{{comment.author.get_full_name}}: {{comment.text}}</div>
+              {% endfor%}
+            </div>
+
+            <a href="{% url 'home' %}"> All Posts </a>
+          <h1 class="bold"> {{ blog.Blog_app }}</h1>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+{% endblock %}

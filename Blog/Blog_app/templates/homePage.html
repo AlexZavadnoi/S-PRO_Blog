@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for post in posts_list %}
+      <li>
+        <div class="card-panel z-depth-0 expense">
+          <div class="row">
+
+            <div class="col l6">
+              <a href="{% url 'post_detail' post.id %}"><span class="title">{{ post.title }}</span></a>
+            </div>
+
+            <div class="col l3">
+              <span class="title">${{ post.text | truncatechars:50 }}</span>
+            </div>
+
+            <div class="col 1">
+              <span class="title bold"> <img src="{{ post.image.picture.url }}"> </span>
+            </div>
+
+          </div>
+        </div>
+      </li>
+{% endfor %}
+
+{% endblock %}
